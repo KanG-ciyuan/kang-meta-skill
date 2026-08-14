@@ -134,6 +134,7 @@ class PublishSkillTest(unittest.TestCase):
                 verify_only=False,
                 no_merge=False,
                 no_sync_local=True,
+                skip_install_check=True,
                 skip_author_section=False,
             )
             result = PUBLISH.publish(args, FakeRunner())
