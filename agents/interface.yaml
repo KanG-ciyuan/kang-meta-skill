@@ -1,0 +1,44 @@
+interface:
+  display_name: "Kang Meta Skill"
+  short_description: "Research, create, evaluate, preserve, and safely publish Kang Skills"
+  default_prompt: "Use $kang-meta-skill to decide whether this material should become a reusable Skill, research relevant prior art when useful, create or improve the package, evaluate its trigger and output boundaries, and prepare a governed GitHub release only when I explicitly request publication. Keep audit-only work read-only, never push directly to main or master, never reuse a released version, and do not install or sync the Skill locally unless I explicitly request it."
+  examples:
+    - "把这套重复流程整理成我的 kang skill"
+    - "优化这个已有 Skill，补充触发评测和发布门禁"
+    - "只审计这个 Skill 的路由和输出质量，先不要改文件"
+    - "研究相关 Skill，取长补短后创建一个更好的 Kang Skill"
+    - "把这个 Skill 发布到 GitHub，但不要安装到本机"
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets:
+    - "openai"
+    - "claude"
+    - "generic"
+    - "agent-skills-compatible"
+    - "vscode"
+  activation:
+    mode: "manual"
+    paths: []
+  trust:
+    source_tier: "local-reviewed"
+    remote_inline_execution: "forbid"
+    generated_public_claims: "evidence-bound"
+  permissions:
+    network: "public Skill catalogs and source repositories for read-only research; GitHub writes only when requested"
+    file_write: "requested Skill package only"
+    subprocess: "bundled research, validation, Git, GitHub, and optional discovery commands"
+  degradation:
+    catalog_unavailable: "continue with available sources and record missing evidence"
+    upstream_drift: "require manual comparison before claiming parity"
+gates:
+  production:
+    - "one root SKILL.md"
+    - "aligned agents/interface.yaml"
+    - "positive, negative, and near-neighbor trigger cases"
+    - "package validation and honest evidence"
+  governed:
+    - "secret and privacy scan"
+    - "feature branch and pull request"
+    - "immutable versioned release"
+    - "discovery verification"
+    - "local installation only when explicitly requested"

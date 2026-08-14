@@ -4,7 +4,7 @@
 
 Create `kang-meta-skill`, a personal meta Skill for Kang that can research prior art, decide whether material should become a Skill, create or improve a Skill, evaluate it, package it, check installation, and publish it through a governed GitHub release flow.
 
-The result must preserve the useful engineering capabilities of the current local `qiaomu-meta-skill` while presenting only Kang's identity, defaults, evidence, and release history. This is a functional adaptation, not a superficial rename.
+The result must preserve the useful engineering capabilities of the authorized local source package while presenting only Kang's identity, defaults, evidence, and release history. This is a functional adaptation, not a superficial rename.
 
 ## 2. Identity And Defaults
 
@@ -81,7 +81,7 @@ kang-meta-skill/
 ### Entrypoint And Interface
 
 - Rewrite frontmatter and body for `kang-meta-skill` triggers and Kang defaults.
-- Replace all `$qiaomu-meta-skill` invocations with `$kang-meta-skill`.
+- Use `$kang-meta-skill` consistently for all public invocations.
 - Update interface metadata, starter prompts, routing examples, and release criteria.
 - Keep the meta Skill as the single authoring authority once selected, while allowing explicit comparison with other creator Skills.
 
@@ -100,7 +100,7 @@ kang-meta-skill/
 
 ### Validation And Evaluation
 
-- Change validators and trigger concepts from Qiaomu identity to Kang identity.
+- Require Kang identity in validators and trigger concepts.
 - Rebuild trigger cases with `$kang-meta-skill`, `Kang`, `kang-`, and realistic Chinese/English requests.
 - Add negative cases for ordinary documentation, unrelated GitHub publishing, and requests that explicitly reject Skill creation.
 - Preserve tests for source research, package validation, release readiness, publishing safety, discovery, and handoff generation.
@@ -108,7 +108,7 @@ kang-meta-skill/
 
 ### Reports And Assets
 
-- Do not copy `assets/qiaomu-profile/`.
+- Do not copy any source profile assets.
 - Do not copy source iteration reports, personal catalog reports, generated Skill IR, or source trigger report as Kang evidence.
 - Create only fresh baseline and verification reports generated during this implementation.
 

@@ -1,0 +1,59 @@
+{
+  "name": "kang-meta-skill",
+  "version": "1.0.0",
+  "owner": "Kang",
+  "updated_at": "2026-08-14",
+  "status": "archived-backup",
+  "maturity_tier": "governed",
+  "lifecycle_stage": "library",
+  "context_budget_tier": "production",
+  "review_cadence": "manual",
+  "upstream_inspiration": "",
+  "upstream_sync": {
+    "mode": "manual-comparison",
+    "automatic": false,
+    "policy": "Do not claim parity until changes are reviewed and verified"
+  },
+  "kang_defaults": {
+    "skill_name_prefix": "kang-",
+    "max_preferred_hyphen_parts": 3,
+    "copyright": "Copyright (c) Kang",
+    "github_owner": "KanG-ciyuan",
+    "github": "https://github.com/KanG-ciyuan/"
+  },
+  "target_platforms": [
+    "openai",
+    "claude",
+    "generic",
+    "agent-skills-compatible",
+    "vscode"
+  ],
+  "factory_components": [
+    "references",
+    "scripts",
+    "evals",
+    "reports"
+  ],
+  "release_gates": [
+    "prior_art_research",
+    "dual_catalog_discovery",
+    "creation_handoff",
+    "generalization_gate",
+    "action_boundary",
+    "root_entrypoint_isolation",
+    "validate_skill",
+    "version_report_consistency",
+    "context_budget_validation",
+    "export_skill_ir",
+    "trigger_eval",
+    "release_readiness_audit",
+    "secret_scan",
+    "evidence_bound_public_claims",
+    "feature_branch_only_publication",
+    "pull_request_review_and_check_gate",
+    "released_version_immutability",
+    "github_release_creation",
+    "discovery_verification",
+    "optional_local_sync"
+  ]
+}
