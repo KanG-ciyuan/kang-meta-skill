@@ -38,6 +38,25 @@ class IdentityContractTest(unittest.TestCase):
         self.assertIn("does not update automatically", readme)
         self.assertIn("not installed locally", readme)
 
+    def test_public_readme_explains_value_usage_outputs_and_evidence(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+
+        required_sections = (
+            "## 为什么需要它",
+            "## 它会做什么",
+            "## 它会交付什么",
+            "## 你可以直接这样说",
+            "## 验证记录",
+            "## Troubleshooting",
+        )
+        for section in required_sections:
+            with self.subTest(section=section):
+                self.assertIn(section, readme)
+
+        self.assertIn("npx skills add KanG-ciyuan/kang-meta-skill", readme)
+        self.assertIn("35 / 35", readme)
+        self.assertIn("23 / 23", readme)
+
 
 if __name__ == "__main__":
     unittest.main()
