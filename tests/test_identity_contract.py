@@ -32,11 +32,13 @@ class IdentityContractTest(unittest.TestCase):
     def test_package_has_no_profile_asset_bundle(self) -> None:
         self.assertFalse((ROOT / "assets").exists())
 
-    def test_archive_mode_does_not_claim_automatic_upstream_sync(self) -> None:
+    def test_public_readme_omits_owner_local_state_and_backup_positioning(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
 
-        self.assertIn("does not update automatically", readme)
-        self.assertIn("not installed locally", readme)
+        self.assertNotIn("not installed locally", readme.lower())
+        self.assertNotIn("本机安装", readme)
+        self.assertNotIn("独立备份", readme)
+        self.assertIn("由 **Kang** 独立创建并维护", readme)
 
     def test_public_readme_explains_value_usage_outputs_and_evidence(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")

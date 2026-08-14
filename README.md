@@ -6,19 +6,15 @@
 [![License](https://img.shields.io/github/license/KanG-ciyuan/kang-meta-skill?style=flat-square)](LICENSE)
 [![Last commit](https://img.shields.io/github/last-commit/KanG-ciyuan/kang-meta-skill?style=flat-square)](https://github.com/KanG-ciyuan/kang-meta-skill/commits/main)
 
-`kang-meta-skill` 是由 **Kang** 创建并维护的 Skill 工程与发布工作流。它不是一段一次性提示词，而是用来判断“什么值得做成 Skill”、研究现有方案、组织能力包、验证触发与输出边界，并在获得明确授权后安全发布到 GitHub 的通用 Meta Skill。
-
-> [!IMPORTANT]
-> 本仓库是独立、人工维护的备份版。It **does not update automatically** and is currently **not installed locally**. 后续能力变化需要先比较、再适配、后测试，不默认与任何持续更新的版本保持一致。
+`kang-meta-skill` 是由 **Kang** 独立创建并维护的 Skill 工程与发布工作流。它不是一段一次性提示词，而是用来判断“什么值得做成 Skill”、研究现有方案、组织能力包、验证触发与输出边界，并在获得明确授权后安全发布到 GitHub 的通用 Meta Skill。
 
 ## 当前状态
 
 | 项目 | 状态 |
 |---|---|
 | 公开版本 | `v1.0.0` |
-| 定位 | Kang 个人维护的独立备份 |
-| 更新方式 | 人工对比、测试、Pull Request 和新版本发布 |
-| 本机安装 | 未安装，仅在未来明确需要时安装 |
+| 定位 | Kang 独立创建并维护的通用 Meta Skill |
+| 更新方式 | 人工审查、测试、Pull Request 和版本发布 |
 | 开源协议 | MIT |
 
 ## 为什么需要它
@@ -94,9 +90,9 @@ your-skill/
 - “只审计这个 Skill，先不要修改任何文件。”
 - “把这个 Skill 发布到 GitHub，但不要安装或同步到本机。”
 
-## 未来安装
+## 安装
 
-当前版本刻意保持未安装状态。只有未来需要启用这个备份时，才使用：
+使用支持 Agent Skills 的工具安装：
 
 ```bash
 npx skills add KanG-ciyuan/kang-meta-skill --skill kang-meta-skill
@@ -108,8 +104,6 @@ npx skills add KanG-ciyuan/kang-meta-skill --skill kang-meta-skill
 test -f ~/.agents/skills/kang-meta-skill/SKILL.md
 python3 ~/.agents/skills/kang-meta-skill/scripts/validate_skill.py ~/.agents/skills/kang-meta-skill
 ```
-
-> 安装、替换或同步现有 Skill 都是独立操作，不会因为仓库已经公开而自动发生。
 
 ## 前置条件
 
@@ -129,7 +123,7 @@ python3 ~/.agents/skills/kang-meta-skill/scripts/validate_skill.py ~/.agents/ski
 | 修改文件 | 仅在用户要求创建或改进时 | 审计、评估和诊断请求保持只读 |
 | 公开网络 | 只读研究 | 不为研究直接执行来源不明的第三方代码 |
 | GitHub 写入 | 默认关闭 | 需要明确发布授权，禁止直接推送默认分支 |
-| 本地安装 | 默认关闭 | 需要与发布分开的明确请求 |
+| 生成 Skill 的安装 | 默认关闭 | 需要与发布分开的明确请求 |
 
 ## 验证记录
 
@@ -142,7 +136,6 @@ python3 ~/.agents/skills/kang-meta-skill/scripts/validate_skill.py ~/.agents/ski
 | 包结构验证 | 0 warnings | 验证入口、必要文件、README 和元数据 |
 | 密钥与身份扫描 | 通过 | 检查公开包中的秘密风险和他人身份信息 |
 | GitHub 发现 | 发现 1 个 Skill | 确认仓库根入口可被识别 |
-| 本地安装 | 未执行 | 用户要求保持未安装，不包装成安装成功 |
 
 在仓库根目录重新运行：
 
@@ -153,17 +146,16 @@ python3 scripts/trigger_eval.py . --cases evals/trigger_cases.json
 python3 scripts/release_check.py . --phase local --run-tests
 ```
 
-这些证据说明当前版本通过了已定义检查，不代表它在未来与其他版本自动保持能力一致。
+这些证据说明当前版本通过了已定义检查，不代表它在所有环境和任务中都能产生相同结果。
 
-## 手动更新模型
+## 版本与维护
 
-这是一个人工维护的备份，不是自动镜像。每次更新应当：
+本项目通过人工审查、自动化测试和版本发布进行维护。每次更新应当：
 
-1. 比较当前可用能力与本仓库的差异；
-2. 只选择对 Kang 版本有价值的机制；
-3. 为预期行为增加会先失败的测试；
-4. 完成最小必要适配并重新验证；
-5. 通过功能分支、Pull Request 和新版本发布，不覆盖已发布版本。
+1. 说明预期能力和使用者影响；
+2. 为新行为增加可复现的测试；
+3. 完成最小必要改动并重新验证；
+4. 通过功能分支、Pull Request 和新版本发布，不覆盖已发布版本。
 
 ## Troubleshooting
 
@@ -173,8 +165,7 @@ python3 scripts/release_check.py . --phase local --run-tests
 | Skill 没有按预期触发 | `description` 、正反例和使用话术不一致 | 调整触发边界后重新运行 `trigger_eval.py` |
 | 外部 Skill 搜索失败 | 目录、网络或公开仓库不可用 | 继续使用其他可核实来源，并将缺口标记为 `missing evidence` |
 | 发布门禁阻止 | 缺少证据、分支不正确、版本重用或存在秘密风险 | 修复门禁报告指出的原因，不绕过检查 |
-| GitHub 已发布但本机找不到 | 本仓库默认不安装、不同步 | 只在明确需要时执行安装命令 |
-| 能力与当前活跃版本不同 | 备份版不会自动同步 | 先人工比较、测试和复核，再发布新版本 |
+| GitHub 已发布但本机找不到 | 公开仓库不等于已安装 | 执行安装命令，再检查 Skill 目录 |
 
 ## License
 
