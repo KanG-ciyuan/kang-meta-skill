@@ -1,0 +1,169 @@
+{
+  "schema_version": "2.0.0-kang-lite",
+  "generated_at": "2026-08-14",
+  "package": {
+    "name": "kang-meta-skill",
+    "version": "1.0.0",
+    "owner": "Kang",
+    "maturity_tier": "governed",
+    "lifecycle_stage": "library",
+    "upstream_inspiration": "",
+    "upstream_sync": {
+      "mode": "manual-comparison",
+      "automatic": false,
+      "policy": "Do not claim parity until changes are reviewed and verified"
+    }
+  },
+  "intent": {
+    "description": "Use when Kang wants to create, improve, preserve, migrate, evaluate, package, govern, or publish a reusable Skill from a repeated workflow, prompt set, SOP, transcript, document, script, or existing agent Skill; or needs Skill research, trigger/output evaluation, release checks, or installation-readiness review. Exclude one-off summaries, translations, ordinary documents, non-Skill packages, and requests that explicitly should not become a Skill.",
+    "job_to_be_done": "Use when Kang wants to create, improve, preserve, migrate, evaluate, package, govern, or publish a reusable Skill from a repeated workflow, prompt set, SOP, transcript, document, script, or existing agent Skill; or needs Skill research, trigger/output evaluation, release checks, or installation-readiness review. Exclude one-off summaries, translations, ordinary documents, non-Skill packages, and requests that explicitly should not become a Skill.",
+    "target_users": [
+      "Kang operator"
+    ],
+    "inputs": [],
+    "outputs": [],
+    "exclusions": [],
+    "kang_defaults": {
+      "skill_name_prefix": "kang-",
+      "max_preferred_hyphen_parts": 3,
+      "copyright": "Copyright (c) Kang",
+      "github_owner": "KanG-ciyuan",
+      "github": "https://github.com/KanG-ciyuan/"
+    }
+  },
+  "triggers": {
+    "should_trigger": [
+      "把这个流程整理成一个 kang skill",
+      "基于这个开源 skill 优化升级Kang meta skill",
+      "优化这个已有 skill，补一下 trigger eval 和发布门禁",
+      "把这套 SOP、脚本和提示词封装成团队可复用的 agent 能力",
+      "Create a skill from this repeated workflow and package it for Kang team reuse.",
+      "Refactor this prompt collection into a governed reusable skill package with evals.",
+      "先搜索 skill 目录，找安装量最高、口碑证据强的相关能力，学习后创建一个更好的 kang skill",
+      "Research the strongest existing agent skills, then synthesize an original Kang skill without copying them.",
+      "把这个旧 skill 迁移成新的可安装格式，并检查递归发现和安装入口",
+      "审计这个 kang skill 的路由边界和输出评估，只给发现和修复建议，先不要改文件",
+      "Check whether this agent skill package installs cleanly and whether nested examples can be mis-discovered.",
+      "把这个 kang skill 发布到 GitHub，并完成 PR、Release 和干净安装验证",
+      "先 dry-run 检查这个Kang skill 的 README、Author、版本和发布条件，不要写 GitHub",
+      "把这个 kang skill 直接推 main 发布，如果不安全就改成规范 PR 流程"
+    ],
+    "should_not_trigger": [
+      "解释一下什么是 agent skill，不要做成 skill",
+      "把这篇文章翻译一下",
+      "帮我写个产品标题",
+      "Summarize this random note in three bullets.",
+      "Just explain the difference between prompts and skills.",
+      "把这个普通 Python 包发布到 PyPI"
+    ],
+    "near_neighbor": [
+      "帮我看一下这个 README 顺不顺，但不要改成 skill",
+      "头脑风暴几个插件名字，先不要打包发布",
+      "给这个脚本加一个 argparse 参数"
+    ]
+  },
+  "workflow": {
+    "router_rules": [],
+    "compact_workflow": [],
+    "gate_ladder": [],
+    "output_contract": [
+      "a working Skill directory with one trigger-aware root entrypoint;",
+      "aligned interface metadata and public README when shared or published;",
+      "trigger cases and generated trigger report for Production and above;",
+      "Skill IR, research record, creation handoff, and governance evidence when required;",
+      "references, scripts, assets, and output evals only when they improve the result;",
+      "publication artifacts only when publication was explicitly requested."
+    ]
+  },
+  "resources": {
+    "references": [
+      "references/creation-handoff.md",
+      "references/eval-playbook.md",
+      "references/gate-selection.md",
+      "references/github-readme-playbook.md",
+      "references/governance.md",
+      "references/intent-dialogue.md",
+      "references/non-skill-decision-tree.md",
+      "references/operating-modes.md",
+      "references/output-eval-method.md",
+      "references/prior-art-research.md",
+      "references/publishing.md",
+      "references/qa-ladder.md",
+      "references/resource-boundaries.md",
+      "references/review-release-gates.md",
+      "references/skill-archetypes.md",
+      "references/skill-engineering-method.md",
+      "references/skill-ir-method.md",
+      "references/skillops-loop.md"
+    ],
+    "scripts": [
+      "scripts/export_skill_ir.py",
+      "scripts/publish_skill.py",
+      "scripts/release_check.py",
+      "scripts/research_prior_art.py",
+      "scripts/search_skillsmp.py",
+      "scripts/trigger_eval.py",
+      "scripts/validate_skill.py"
+    ],
+    "evals": [
+      "evals/trigger_cases.json"
+    ],
+    "reports": [
+      "reports/creation-handoff.md",
+      "reports/prior-art-research.md",
+      "reports/skill-ir.json",
+      "reports/trigger-eval.json",
+      "reports/verification-2026-08-14.md"
+    ]
+  },
+  "portability": {
+    "canonical_format": "agent-skills",
+    "adapter_targets": [
+      "openai",
+      "claude",
+      "generic",
+      "agent-skills-compatible",
+      "vscode"
+    ],
+    "activation": {
+      "mode": "manual",
+      "paths": []
+    },
+    "execution": {},
+    "trust": {
+      "source_tier": "local-reviewed",
+      "remote_inline_execution": "forbid",
+      "generated_public_claims": "evidence-bound"
+    },
+    "permissions": {
+      "network": "public Skill catalogs and source repositories for read-only research; GitHub writes only when requested",
+      "file_write": "requested Skill package only",
+      "subprocess": "bundled research, validation, Git, GitHub, and optional discovery commands"
+    },
+    "degradation": {
+      "catalog_unavailable": "continue with available sources and record missing evidence",
+      "upstream_drift": "require manual comparison before claiming parity"
+    }
+  },
+  "gates": {
+    "production": [
+      "one root SKILL.md",
+      "aligned agents/interface.yaml",
+      "positive, negative, and near-neighbor trigger cases",
+      "package validation and honest evidence"
+    ],
+    "governed": [
+      "secret and privacy scan",
+      "feature branch and pull request",
+      "immutable versioned release",
+      "discovery verification",
+      "local installation only when explicitly requested"
+    ]
+  },
+  "evidence_boundary": {
+    "generated_reports_are_evidence": true,
+    "planned_work_is_evidence": false,
+    "missing_external_or_human_evidence_label": "missing evidence",
+    "public_claim_policy": "claim only what local validation, install proof, human review, or provider-backed evidence actually supports"
+  }
+}

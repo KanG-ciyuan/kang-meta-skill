@@ -1,6 +1,6 @@
 ---
 name: kang-meta-skill
-description: Use when Kang wants to preserve a repeated workflow, prompt set, SOP, transcript, document, script, or existing agent Skill as a reusable Skill; or needs Skill research, creation, improvement, migration, trigger/output evaluation, packaging, governance, GitHub publication, release checks, or installation-readiness review. Exclude one-off summaries, translations, ordinary documents, non-Skill packages, and requests that explicitly should not become a Skill.
+description: Use when Kang wants to create, improve, preserve, migrate, evaluate, package, govern, or publish a reusable Skill from a repeated workflow, prompt set, SOP, transcript, document, script, or existing agent Skill; or needs Skill research, trigger/output evaluation, release checks, or installation-readiness review. Exclude one-off summaries, translations, ordinary documents, non-Skill packages, and requests that explicitly should not become a Skill.
 ---
 
 # Kang Meta Skill
