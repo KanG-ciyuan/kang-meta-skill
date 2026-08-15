@@ -36,7 +36,6 @@ Recommended order:
 ## 输出示例
 ## 配置
 ## Troubleshooting
-## 致谢
 ## License
 ```
 
@@ -56,7 +55,7 @@ concrete output preview. Long architecture notes belong later.
 - [ ] Troubleshooting has at least 3 rows: symptom, cause, fix.
 - [ ] Risks and side effects are explicit for credentials, writes, costs, network
       calls, publishing, destructive actions, or account automation.
-- [ ] Third-party tools and upstream projects are credited.
+- [ ] Public content is Kang-owned; attribution-required external material is excluded.
 - [ ] README does not expose private domains, tokens, cookies, VPS paths, or
       user-specific absolute paths unless the skill is explicitly private.
 
@@ -126,10 +125,6 @@ Published: https://github.com/OWNER/example-skill
 | `No valid skills found` | YAML frontmatter 不合法 | 使用 `description: |` 块标量 |
 | `gh: not authenticated` | GitHub CLI 未登录 | 运行 `gh auth login` |
 | 找不到 skill | 安装目录不一致 | 检查 `~/.agents/skills/<name>` |
-
-## 致谢
-
-列出依赖的开源工具、上游项目或参考方法。
 
 ## License
 

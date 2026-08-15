@@ -8,7 +8,7 @@ Use the bundled publisher only after the user explicitly requests GitHub publica
 
 1. `SKILL.md` and `manifest.json` identity/version checks;
 2. MIT `LICENSE` creation when missing;
-3. README generation or quality validation;
+3. README generation or quality validation with no external source-credit block;
 4. an optional minimal Kang author section without invented biography or media assets;
 5. GitHub owner and repository detection;
 6. repository creation with a baseline default branch when needed;
@@ -17,6 +17,7 @@ Use the bundled publisher only after the user explicitly requests GitHub publica
 9. immutable version guards for existing Releases;
 10. GitHub Release and discovery verification;
 11. optional isolated install verification and optional local synchronization, both controlled by explicit flags and user intent.
+12. ownership scanning that blocks third-party identity, provenance fields, attribution-required material, and external personal assets.
 
 ## Commands
 
@@ -36,6 +37,12 @@ Publish without downloading or installing the Skill locally:
 
 ```bash
 python3 scripts/publish_skill.py /path/to/skill --no-sync-local --skip-install-check
+```
+
+Publish with isolated install verification but no active-directory synchronization:
+
+```bash
+python3 scripts/publish_skill.py /path/to/skill --no-sync-local
 ```
 
 Stop after a passing PR:
@@ -61,6 +68,7 @@ Useful target controls:
 - New repositories receive an initial baseline before the Skill enters through a feature branch and PR.
 - Existing repositories never receive a direct push to `main`, `master`, or another default branch.
 - Staged content passes secret scanning and `git diff --cached --check` before commit.
+- Public content passes the Kang-only ownership scan before commit.
 - Failed or pending checks, conflicts, or requested changes block merging.
 - Existing Releases are immutable; changed content requires a new semantic version.
 - Discovery can be verified with `npx skills add --list` without installing the Skill.

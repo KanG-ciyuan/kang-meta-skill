@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_type": "provider_backed",
+  "kang_version": "1.0.0",
+  "run_method": "fresh read-only agent evaluation against the current Kang v1 instructions",
+  "cases": [
+    {
+      "id": "reuse_builtin_skill_readme",
+      "kang_actual": "create_new",
+      "kang_paused": false,
+      "kang_notes": "Treated the recurring README job and explicit creation request as grounds for a new lightweight Skill."
+    },
+    {
+      "id": "one_off_frontend_readme",
+      "kang_actual": "not_a_skill",
+      "kang_paused": false,
+      "kang_notes": "Honored the explicit one-off, non-Skill boundary and would improve the README directly."
+    },
+    {
+      "id": "partial_overlap_requires_confirmation",
+      "kang_actual": "create_new",
+      "kang_paused": false,
+      "kang_notes": "Followed the requested action and would create an adapter Skill after prior-art research or a recorded research gap."
+    },
+    {
+      "id": "distinct_skill_allowed",
+      "kang_actual": "create_new",
+      "kang_paused": false,
+      "kang_notes": "Treated the distinct permissions, outputs, and lifecycle as grounds for a new Skill and proceeded without a separate decision pause."
+    },
+    {
+      "id": "incomplete_inventory_blocks_creation",
+      "kang_actual": "create_new",
+      "kang_paused": false,
+      "kang_notes": "Would proceed with the requested Skill while recording unavailable inventory research as missing evidence."
+    },
+    {
+      "id": "ordinary_invocation_stays_concise",
+      "kang_actual": "direct_reuse",
+      "kang_paused": false,
+      "kang_notes": "Used the existing Meta Skill in read-only audit mode without edits."
+    }
+  ]
+}

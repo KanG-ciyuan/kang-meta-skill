@@ -1,33 +1,27 @@
 # Creation Handoff
 
-Use this structure after creating or materially redesigning a skill. Keep it concise enough to read in the final response, while preserving the fuller version in `reports/creation-handoff.md` for Production or higher.
+Use this structure after creating or materially redesigning a Skill. Keep authorship and personal branding separate from factual research references.
 
 ## 1. Result
 
-- skill name and version
-- one-sentence job to be done
-- local path and publication status
+- Skill name and version;
+- one-sentence job to be done;
+- local path and publication status.
 
-## 2. Reference skills studied
+## 2. Reference Skills Studied
 
-Name 2–4 genuinely relevant candidates. For each one include:
+Name each relevant Skill or repository studied, link the public source, record the observation date, and state why it was relevant. Public research references do not transfer authorship or endorsement to the created package.
 
-- skill and source link
-- why it entered the shortlist
-- dated adoption or trust signal, with metric semantics preserved
-- concrete mechanism learned
-- where that mechanism appears in the created skill
-
-Do not list a candidate that was only seen in a search result but not inspected.
-
-## 3. Absorbed and rejected
+## 3. Candidate-Specific Lessons
 
 Summarize:
 
-- `keep`: mechanism retained in principle
-- `adapt`: mechanism changed for Kang users, tools, language, or risk level
-- `reject`: mechanism omitted and the concrete reason
-- `invent`: original connection or capability created for this job
+- `keep`: proven mechanism retained;
+- `adapt`: mechanism rewritten for the target users, tools, language, ownership, or risk level;
+- `reject`: mechanism or material excluded with the concrete reason;
+- `invent`: original connection or capability created for the job.
+
+Respect licenses and attribution requirements for any reused material. Do not copy another person's profile, avatar, QR code, social account, biography, brand injection, or ownership defaults.
 
 ## 4. Advantages and highlights
 
@@ -35,33 +29,31 @@ Each advantage needs a label and evidence pointer:
 
 | Label | Meaning | Allowed wording |
 |---|---|---|
-| `design advantage` | visible in the source/package and better aligned to the stated target job | “This design adds…” or “Compared with the inspected candidates, this package explicitly…” |
-| `validated advantage` | supported by a named trigger, output, runtime, install, or human evaluation | “Passed 16/16 trigger cases…” |
-| `hypothesis` | plausible but not yet proven | “Expected to help…, but provider-backed comparison is missing evidence.” |
+| `design advantage` | visible in the package and aligned to the stated target job | "This design adds..." |
+| `validated advantage` | supported by a trigger, output, runtime, install, or human evaluation | "Passed 16/16 trigger cases..." |
+| `hypothesis` | plausible but not yet proven | "Expected to help..., but provider-backed evidence is missing." |
 
-Do not write “best,” “world-class,” “more accurate,” or “better than X” unless a fair comparison supports it. A checklist difference is not automatically an outcome advantage.
+Do not claim universal superiority without fair evidence.
 
 ## 5. Verification and limits
 
 Report:
 
-- package validation
-- trigger results
-- output, runtime, or human evidence when available
-- what remains `missing evidence`
-- permissions or actions deliberately excluded
+- package validation;
+- trigger results;
+- output, runtime, or human evidence when available;
+- what remains `missing evidence`;
+- permissions or actions deliberately excluded;
+- Kang-only ownership scan status.
 
 ## Compact final-response template
 
 ```markdown
-已创建：<skill> <version> — <one-line outcome>
+已创建：<skill> <version> - <one-line outcome>
 
-参考学习
-- <skill A>: 学习 <mechanism>; 落到 <artifact/section>。
-- <skill B>: 学习 <mechanism>; 落到 <artifact/section>。
-
-取舍与原创
+能力取舍
 - 保留：...
+- 适配：...
 - 舍弃：...
 - 原创：...
 

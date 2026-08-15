@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "capabilities": [
+    {
+      "id": "routing_authority",
+      "disposition": "preserve",
+      "kang_location": "SKILL.md#router-rules",
+      "verification": "tests/test_capability_parity.py"
+    },
+    {
+      "id": "prior_art_discovery",
+      "disposition": "preserve",
+      "kang_location": "SKILL.md#built-in-prior-art-discovery",
+      "verification": "tests/test_builtin_discovery.py"
+    },
+    {
+      "id": "generalization_gate",
+      "disposition": "preserve",
+      "kang_location": "SKILL.md#generalization-gate",
+      "verification": "tests/test_capability_parity.py"
+    },
+    {
+      "id": "operating_modes",
+      "disposition": "preserve",
+      "kang_location": "references/operating-modes.md",
+      "verification": "scripts/validate_skill.py"
+    },
+    {
+      "id": "skill_ir",
+      "disposition": "identity_adapt",
+      "kang_location": "scripts/export_skill_ir.py",
+      "verification": "tests/test_identity_contract.py"
+    },
+    {
+      "id": "trigger_eval",
+      "disposition": "preserve",
+      "kang_location": "scripts/trigger_eval.py",
+      "verification": "evals/trigger_cases.json"
+    },
+    {
+      "id": "output_eval",
+      "disposition": "preserve",
+      "kang_location": "references/output-eval-method.md",
+      "verification": "tests/test_release_check.py"
+    },
+    {
+      "id": "resource_boundaries",
+      "disposition": "preserve",
+      "kang_location": "references/resource-boundaries.md",
+      "verification": "scripts/validate_skill.py"
+    },
+    {
+      "id": "creation_handoff",
+      "disposition": "identity_adapt",
+      "kang_location": "references/creation-handoff.md",
+      "verification": "tests/test_creation_handoff.py"
+    },
+    {
+      "id": "skill_readme",
+      "disposition": "identity_adapt",
+      "kang_location": "references/github-readme-playbook.md",
+      "verification": "tests/test_publish_skill.py"
+    },
+    {
+      "id": "permission_gates",
+      "disposition": "preserve",
+      "kang_location": "references/governance.md",
+      "verification": "scripts/release_check.py"
+    },
+    {
+      "id": "release_gates",
+      "disposition": "preserve",
+      "kang_location": "references/review-release-gates.md",
+      "verification": "tests/test_release_check.py"
+    },
+    {
+      "id": "github_publication",
+      "disposition": "identity_adapt",
+      "kang_location": "scripts/publish_skill.py",
+      "verification": "tests/test_publish_skill.py"
+    },
+    {
+      "id": "release_discovery",
+      "disposition": "preserve",
+      "kang_location": "scripts/publish_skill.py",
+      "verification": "tests/test_publish_skill.py"
+    },
+    {
+      "id": "isolated_install_verification",
+      "disposition": "preserve",
+      "kang_location": "scripts/release_check.py",
+      "verification": "tests/test_release_check.py"
+    },
+    {
+      "id": "failure_degradation",
+      "disposition": "preserve",
+      "kang_location": "agents/interface.yaml",
+      "verification": "scripts/validate_skill.py"
+    }
+  ]
+}

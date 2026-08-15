@@ -206,15 +206,6 @@ def validate(root: Path) -> dict[str, Any]:
             "verification commands": "validate_skill.py" in readme_text,
             "troubleshooting": "Troubleshooting" in readme_text,
         }
-        manifest_path = root / "manifest.json"
-        if manifest_path.exists():
-            try:
-                manifest_for_readme = load_json(manifest_path)
-            except ValueError:
-                manifest_for_readme = {}
-            upstream = str(manifest_for_readme.get("upstream_inspiration", "")).strip()
-            if upstream:
-                readme_checks["declared upstream credit"] = upstream in readme_text
         for label, ok in readme_checks.items():
             if not ok:
                 warnings.append(f"README may be missing {label}")

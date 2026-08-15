@@ -228,9 +228,8 @@ def ensure_author_section(root: Path, *, write: bool) -> list[str]:
     return changes
 
 
-def generated_readme(meta: dict[str, str], github_owner: str, repo: str, upstream: str) -> str:
+def generated_readme(meta: dict[str, str], github_owner: str, repo: str) -> str:
     first = re.split(r"[。.]", meta["description"], maxsplit=1)[0].strip()
-    upstream_line = f"Upstream inspiration: {upstream}" if upstream else "Upstream inspiration: none declared"
     return f"""# {repo}
 
 > {first}。
@@ -285,10 +284,6 @@ python3 ~/.agents/skills/{meta['name']}/scripts/validate_skill.py ~/.agents/skil
 | 找不到 Skill | 安装源或名称错误 | 运行 `npx skills add {github_owner}/{repo} --list` |
 | 验证脚本失败 | 前置依赖或证据文件缺失 | 按错误路径补齐后重新运行 |
 
-## 致谢
-
-{upstream_line}
-
 ## License
 
 MIT
@@ -309,7 +304,7 @@ PLACEHOLDERS = (
 )
 
 
-def check_readme(root: Path, upstream: str, *, require_author: bool) -> list[str]:
+def check_readme(root: Path, *, require_author: bool) -> list[str]:
     path = root / "README.md"
     if not path.is_file():
         return ["README.md missing"]
@@ -322,7 +317,6 @@ def check_readme(root: Path, upstream: str, *, require_author: bool) -> list[str
         "prerequisite checklist": "- [ ]" in text,
         "troubleshooting": "Troubleshooting" in text,
         "license": "## License" in text or "## 许可证" in text,
-        "upstream credit": not upstream or upstream in text,
         "Kang author": not require_author or (AUTHOR_START in text and AUTHOR_END in text),
     }
     failures.extend(f"README missing {label}" for label, passed in requirements.items() if not passed)
@@ -338,17 +332,15 @@ def prepare_package(
     write: bool,
     include_author: bool,
 ) -> dict[str, Any]:
-    manifest = load_json(root / "manifest.json")
-    upstream = str(manifest.get("upstream_inspiration", "")).strip()
     changes = ensure_license(root, meta["owner"], write=write)
     readme = root / "README.md"
     if not readme.exists():
         changes.append("README.md")
         if write:
-            readme.write_text(generated_readme(meta, github_owner, repo, upstream), encoding="utf-8")
+            readme.write_text(generated_readme(meta, github_owner, repo), encoding="utf-8")
     if include_author:
         changes.extend(ensure_author_section(root, write=write))
-    failures = [] if not write and not readme.exists() else check_readme(root, upstream, require_author=include_author)
+    failures = [] if not write and not readme.exists() else check_readme(root, require_author=include_author)
     return {"changes": sorted(set(changes)), "failures": failures}
 
 

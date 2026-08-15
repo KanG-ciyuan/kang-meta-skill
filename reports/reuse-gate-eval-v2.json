@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_type": "agent_behavioral_review",
+  "kang_version": "2.0.0",
+  "evaluated_at": "2026-08-15",
+  "independent_blind_review": false,
+  "run_method": "Current agent read the v2 root workflow and personal decision gate, then evaluated the six fixed prompts without using the v1 answers as a decision key.",
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "decision_matches": 6,
+    "pause_matches": 6
+  },
+  "cases": [
+    {
+      "id": "reuse_builtin_skill_readme",
+      "expected_decision": "direct_reuse",
+      "actual_decision": "direct_reuse",
+      "expected_pause": false,
+      "actual_pause": false,
+      "evidence": ["references/github-readme-playbook.md"],
+      "notes": "Agent Skill repository README work is already part of the Meta Skill lifecycle."
+    },
+    {
+      "id": "one_off_frontend_readme",
+      "expected_decision": "not_a_skill",
+      "actual_decision": "not_a_skill",
+      "expected_pause": false,
+      "actual_pause": false,
+      "evidence": ["ordinary repository README boundary", "explicit one-off request"],
+      "notes": "Complete the README task directly without creating a reusable Skill."
+    },
+    {
+      "id": "partial_overlap_requires_confirmation",
+      "expected_decision": "extend_existing",
+      "actual_decision": "extend_existing",
+      "expected_pause": true,
+      "actual_pause": true,
+      "evidence": ["existing research trigger", "missing private catalog adapter"],
+      "notes": "The core job is shared, so show a Decision Card and wait before extending the existing Skill."
+    },
+    {
+      "id": "distinct_skill_allowed",
+      "expected_decision": "create_new",
+      "actual_decision": "create_new",
+      "expected_pause": true,
+      "actual_pause": true,
+      "evidence": ["distinct system permissions", "distinct output contract", "independent lifecycle"],
+      "notes": "Material independence supports a new Skill, but the Decision Card still requires user confirmation before implementation."
+    },
+    {
+      "id": "incomplete_inventory_blocks_creation",
+      "expected_decision": "missing_evidence",
+      "actual_decision": "missing_evidence",
+      "expected_pause": true,
+      "actual_pause": true,
+      "evidence": ["installed Skill inventory unavailable"],
+      "notes": "Uniqueness cannot be verified, so immediate creation pauses as missing evidence."
+    },
+    {
+      "id": "ordinary_invocation_stays_concise",
+      "expected_decision": "direct_reuse",
+      "actual_decision": "direct_reuse",
+      "expected_pause": false,
+      "actual_pause": false,
+      "evidence": ["existing audit-only mode"],
+      "notes": "Use the existing Meta Skill in read-only audit mode without emitting a full inventory report."
+    }
+  ]
+}

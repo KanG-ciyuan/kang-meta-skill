@@ -1,17 +1,16 @@
 {
   "schema_version": "2.0.0-kang-lite",
-  "generated_at": "2026-08-14",
+  "generated_at": "2026-08-15",
   "package": {
     "name": "kang-meta-skill",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "owner": "Kang",
     "maturity_tier": "governed",
     "lifecycle_stage": "library",
-    "upstream_inspiration": "",
-    "upstream_sync": {
-      "mode": "manual-comparison",
+    "maintenance": {
+      "mode": "manual-reviewed",
       "automatic": false,
-      "policy": "Do not claim parity until changes are reviewed and verified"
+      "policy": "Review capabilities, adopt selectively, and verify before release"
     }
   },
   "intent": {
@@ -63,20 +62,53 @@
     ]
   },
   "workflow": {
-    "router_rules": [],
-    "compact_workflow": [],
-    "gate_ladder": [],
+    "router_rules": [
+      "Route by frontmatter `description` first.",
+      "Once selected, `kang-meta-skill` is the single Skill-authoring authority. Do not invoke another creator unless the user explicitly requests comparison or this Skill is unavailable.",
+      "Built-in public capability research belongs to this Skill. Do not install or delegate to a separate discovery Skill.",
+      "Built-in GitHub publishing belongs to this Skill. Do not require a separate publisher after this package is selected.",
+      "Before proposing a new Skill or substantial split, pass the [Reuse-First Gate](references/personal-decision-gate.md).",
+      "Keep root `SKILL.md` focused on routing and mandatory workflow. Put judgment in `references/`, deterministic behavior in `scripts/`, regression cases in `evals/`, and evidence in `reports/`.",
+      "A package has one discoverable root `SKILL.md`; embedded examples use `SKILL.example.md` or `SKILL.fixture.md`.",
+      "Do not turn one-off summaries, translations, explanations, ordinary documents, or brainstorming into Skills.",
+      "Match the requested action: create or improve requests may edit; audit, evaluate, diagnose, and compare-only requests remain read-only.",
+      "Public Kang packages must not inherit another person's authorship, profile, social accounts, avatar, QR code, personal assets, brand injection, or ownership defaults. Preserve factual research, license, dependency, and candidate evidence when it is functionally required."
+    ],
+    "compact_workflow": [
+      "Decide whether the request deserves a reusable Skill; otherwise answer directly and create no package.",
+      "Capture job, output, users, inputs, exclusions, permissions, standards, assets, platforms, and publication intent.",
+      "Pass the Reuse-First Gate and stop for user choice on partial overlap.",
+      "Research public capabilities only when inventory still has a genuine gap; keep source notes temporary.",
+      "Pass the Generalization Gate for sample-driven core changes.",
+      "Choose the lightest valid mode.",
+      "Write the trigger description early and run trigger cases before expanding structure.",
+      "Create only earned resources; do not duplicate README and `SKILL.md` prose.",
+      "Export Skill IR for Production+, public, or cross-platform packages.",
+      "Add output evaluations when correctness, safety, persuasion, or repeatability cannot be shown by trigger tests alone.",
+      "Keep mutations within the requested action boundary and preserve rollback for risky changes.",
+      "Validate package, tests, trigger behavior, context budget, ownership, secret boundaries, and evidence claims.",
+      "Produce a creation handoff naming reference Skills studied, candidate-specific lessons, deliberate rejections, original contributions, and missing evidence, without inheriting personal branding or authorship.",
+      "Publish only after explicit authorization through feature branch, validation, Pull Request, Release, discovery, and isolated-install gates."
+    ],
+    "gate_ladder": [
+      "`Scaffold`: valid frontmatter, useful README hook, natural triggers, and explicit exclusions.",
+      "`Production`: Scaffold plus interface, trigger evaluation, output contract, troubleshooting, root isolation, and install verification.",
+      "`Library`: Production plus Skill IR, portability, trust, review cadence, and evidence artifacts.",
+      "`Governed`: Library plus permission and rollback boundaries, secret and ownership scans, output or human evidence, and public-claim guards."
+    ],
     "output_contract": [
-      "a working Skill directory with one trigger-aware root entrypoint;",
-      "aligned interface metadata and public README when shared or published;",
-      "trigger cases and generated trigger report for Production and above;",
-      "Skill IR, research record, creation handoff, and governance evidence when required;",
-      "references, scripts, assets, and output evals only when they improve the result;",
-      "publication artifacts only when publication was explicitly requested."
+      "a working Skill directory with one trigger-aware root `SKILL.md`;",
+      "aligned `agents/interface.yaml`;",
+      "a reader-facing README for shared or public Skills;",
+      "trigger cases and generated trigger report for Production+;",
+      "Skill IR, prior-art research report, and creation handoff for Production+;",
+      "references, scripts, output evals, and reports only when they improve judgment or evidence;",
+      "publication artifacts only when publication was requested."
     ]
   },
   "resources": {
     "references": [
+      "references/capability-parity.json",
       "references/creation-handoff.md",
       "references/eval-playbook.md",
       "references/gate-selection.md",
@@ -86,6 +118,7 @@
       "references/non-skill-decision-tree.md",
       "references/operating-modes.md",
       "references/output-eval-method.md",
+      "references/personal-decision-gate.md",
       "references/prior-art-research.md",
       "references/publishing.md",
       "references/qa-ladder.md",
@@ -106,14 +139,18 @@
       "scripts/validate_skill.py"
     ],
     "evals": [
+      "evals/reuse_gate_cases.json",
       "evals/trigger_cases.json"
     ],
     "reports": [
+      "reports/capability-parity-report.md",
       "reports/creation-handoff.md",
       "reports/prior-art-research.md",
+      "reports/reuse-gate-baseline-v1.json",
+      "reports/reuse-gate-eval-v2.json",
       "reports/skill-ir.json",
       "reports/trigger-eval.json",
-      "reports/verification-2026-08-14.md"
+      "reports/verification-2026-08-15-v2.md"
     ]
   },
   "portability": {
@@ -142,7 +179,7 @@
     },
     "degradation": {
       "catalog_unavailable": "continue with available sources and record missing evidence",
-      "upstream_drift": "require manual comparison before claiming parity"
+      "capability_drift": "require manual review before claiming parity"
     }
   },
   "gates": {
@@ -154,6 +191,8 @@
     ],
     "governed": [
       "secret and privacy scan",
+      "Kang-only ownership scan",
+      "reuse-first decision gate",
       "feature branch and pull request",
       "immutable versioned release",
       "discovery verification",

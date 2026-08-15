@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Identity and archival-mode contract for Kang Meta Skill."""
+"""Identity, lifecycle, and public-package contract for Kang Meta Skill."""
 
 from __future__ import annotations
 
@@ -17,7 +17,9 @@ class IdentityContractTest(unittest.TestCase):
 
         self.assertEqual(manifest["name"], "kang-meta-skill")
         self.assertEqual(manifest["owner"], "Kang")
-        self.assertEqual(manifest["version"], "1.0.0")
+        self.assertEqual(manifest["version"], "2.0.0")
+        self.assertEqual(manifest["status"], "active")
+        self.assertEqual(manifest["maintenance"]["mode"], "manual-reviewed")
         self.assertEqual(manifest["kang_defaults"]["skill_name_prefix"], "kang-")
         self.assertEqual(manifest["kang_defaults"]["github_owner"], "KanG-ciyuan")
 
@@ -32,13 +34,45 @@ class IdentityContractTest(unittest.TestCase):
     def test_package_has_no_profile_asset_bundle(self) -> None:
         self.assertFalse((ROOT / "assets").exists())
 
-    def test_public_readme_omits_owner_local_state_and_backup_positioning(self) -> None:
+    def test_public_text_contains_only_kang_identity(self) -> None:
+        forbidden_fragments = (
+            "qiao" + "mu",
+            "joesee" + "sun",
+            "vista" + "8",
+            "yaojin" + "gang",
+        )
+        scanned_suffixes = {".md", ".json", ".yaml", ".yml", ".py"}
+        for path in ROOT.rglob("*"):
+            if not path.is_file() or ".git" in path.parts or path.suffix not in scanned_suffixes:
+                continue
+            text = path.read_text(encoding="utf-8", errors="ignore").lower()
+            for token in forbidden_fragments:
+                self.assertNotIn(token, text, f"prohibited identity in {path.relative_to(ROOT)}")
+
+    def test_public_package_has_no_external_provenance_contract(self) -> None:
+        forbidden_contracts = (
+            "upstream_" + "inspiration",
+            "declared upstream" + " credit",
+            "upstream" + "_sync",
+            "upstream" + "_drift",
+            "upstream" + " credit",
+        )
+        scanned_suffixes = {".md", ".json", ".yaml", ".yml", ".py"}
+        for path in ROOT.rglob("*"):
+            if not path.is_file() or ".git" in path.parts or path.suffix not in scanned_suffixes:
+                continue
+            text = path.read_text(encoding="utf-8", errors="ignore").lower()
+            for token in forbidden_contracts:
+                self.assertNotIn(token, text, f"external provenance contract in {path.relative_to(ROOT)}")
+
+    def test_readme_positions_v2_as_active_kang_skill(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
 
-        self.assertNotIn("not installed locally", readme.lower())
-        self.assertNotIn("本机安装", readme)
+        self.assertIn("`v2.0.0`", readme)
+        self.assertIn("复用优先", readme)
         self.assertNotIn("独立备份", readme)
-        self.assertIn("由 **Kang** 独立创建并维护", readme)
+        self.assertNotIn("not installed locally", readme)
+        self.assertNotIn("archived-backup", readme)
 
     def test_public_readme_explains_value_usage_outputs_and_evidence(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -56,7 +90,7 @@ class IdentityContractTest(unittest.TestCase):
                 self.assertIn(section, readme)
 
         self.assertIn("npx skills add KanG-ciyuan/kang-meta-skill", readme)
-        self.assertIn("35 / 35", readme)
+        self.assertIn("47 / 47", readme)
         self.assertIn("23 / 23", readme)
 
 

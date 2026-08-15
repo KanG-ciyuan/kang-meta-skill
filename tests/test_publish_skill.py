@@ -58,7 +58,6 @@ class PublishSkillTest(unittest.TestCase):
     def test_generated_readme_passes_public_contract(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            upstream = "https://github.com/example/upstream"
             text = PUBLISH.generated_readme(
                 {
                     "name": "kang-demo",
@@ -68,11 +67,11 @@ class PublishSkillTest(unittest.TestCase):
                 },
                 "KanG-ciyuan",
                 "kang-demo",
-                upstream,
             )
             (root / "README.md").write_text(text, encoding="utf-8")
-            self.assertEqual(PUBLISH.check_readme(root, upstream, require_author=False), [])
+            self.assertEqual(PUBLISH.check_readme(root, require_author=False), [])
             self.assertIn("validate_skill.py", text)
+            self.assertNotIn("## 致谢", text)
 
     def test_default_branch_push_is_rejected(self) -> None:
         for branch in ("", "main", "master"):
@@ -118,7 +117,6 @@ class PublishSkillTest(unittest.TestCase):
                         "name": "kang-demo",
                         "version": "1.0.0",
                         "owner": "Kang",
-                        "upstream_inspiration": "https://github.com/example/upstream",
                     }
                 ),
                 encoding="utf-8",
@@ -148,10 +146,7 @@ class PublishSkillTest(unittest.TestCase):
     def test_prepare_package_writes_license_readme_and_author_section(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            (root / "manifest.json").write_text(
-                json.dumps({"upstream_inspiration": "https://github.com/example/upstream"}),
-                encoding="utf-8",
-            )
+            (root / "manifest.json").write_text("{}", encoding="utf-8")
             result = PUBLISH.prepare_package(
                 root,
                 {
