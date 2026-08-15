@@ -1,7 +1,7 @@
 interface:
   display_name: "Kang Meta Skill"
   short_description: "Research, create, evaluate, preserve, and safely publish Kang Skills"
-  default_prompt: "Use $kang-meta-skill to decide whether this material should become a reusable Skill, research relevant prior art when useful, create or improve the package, evaluate its trigger and output boundaries, and prepare a governed GitHub release only when I explicitly request publication. Keep audit-only work read-only, never push directly to main or master, never reuse a released version, and do not install or sync the Skill locally unless I explicitly request it."
+  default_prompt: "Use $kang-meta-skill to inventory built-in capabilities, installed Skills, and Kang repositories before choosing Direct Reuse, Extend Existing, or Create New. Pause for my choice on partial overlap. Research public capabilities only when a real gap remains, preserve factual candidate evidence without personal branding, create or improve the package, and publish only when I explicitly request it. Keep audit-only work read-only, never push directly to main or master, never reuse a released version, and do not sync the Skill into an active directory unless I explicitly request it."
   examples:
     - "把这套重复流程整理成我的 kang skill"
     - "优化这个已有 Skill，补充触发评测和发布门禁"
@@ -29,7 +29,7 @@ compatibility:
     subprocess: "bundled research, validation, Git, GitHub, and optional discovery commands"
   degradation:
     catalog_unavailable: "continue with available sources and record missing evidence"
-    upstream_drift: "require manual comparison before claiming parity"
+    capability_drift: "require manual review before claiming parity"
 gates:
   production:
     - "one root SKILL.md"
@@ -38,6 +38,8 @@ gates:
     - "package validation and honest evidence"
   governed:
     - "secret and privacy scan"
+    - "Kang-only ownership scan"
+    - "reuse-first decision gate"
     - "feature branch and pull request"
     - "immutable versioned release"
     - "discovery verification"

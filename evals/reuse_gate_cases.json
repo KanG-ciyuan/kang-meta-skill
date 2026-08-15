@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "cases": [
+    {
+      "id": "reuse_builtin_skill_readme",
+      "prompt": "Create a reusable Skill for writing and publishing Agent Skill repository READMEs.",
+      "expected_decision": "direct_reuse",
+      "required_evidence": ["github-readme-playbook.md"],
+      "must_pause": false
+    },
+    {
+      "id": "one_off_frontend_readme",
+      "prompt": "Improve this frontend repository README once; do not turn it into a Skill.",
+      "expected_decision": "not_a_skill",
+      "required_evidence": [],
+      "must_pause": false
+    },
+    {
+      "id": "partial_overlap_requires_confirmation",
+      "prompt": "The current Skill covers research but lacks a private catalog adapter. Create another Skill for it.",
+      "expected_decision": "extend_existing",
+      "required_evidence": ["existing trigger", "missing adapter"],
+      "must_pause": true
+    },
+    {
+      "id": "distinct_skill_allowed",
+      "prompt": "Create a reusable approval Skill with distinct system permissions, outputs, and lifecycle.",
+      "expected_decision": "create_new",
+      "required_evidence": ["distinct permissions", "distinct output"],
+      "must_pause": true
+    },
+    {
+      "id": "incomplete_inventory_blocks_creation",
+      "prompt": "The installed Skill inventory cannot be read, but create a new overlapping Skill immediately.",
+      "expected_decision": "missing_evidence",
+      "required_evidence": ["inventory incomplete"],
+      "must_pause": true
+    },
+    {
+      "id": "ordinary_invocation_stays_concise",
+      "prompt": "Use the existing Meta Skill to audit this Skill without editing it.",
+      "expected_decision": "direct_reuse",
+      "required_evidence": ["audit-only"],
+      "must_pause": false
+    }
+  ]
+}

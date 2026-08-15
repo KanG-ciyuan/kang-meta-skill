@@ -131,9 +131,9 @@ For a Scaffold skill, summarize the shortlist and synthesis in the handoff. For 
 ...
 ```
 
-Date all mutable metrics and link to their sources. A report is evidence of research, not proof that the resulting skill is better; demonstrate improvement through trigger cases, output evals, before/after comparisons, or human review when justified.
+Date all mutable metrics and link to their sources. A report is evidence of research, not proof that the resulting Skill is better; demonstrate improvement through trigger cases, output evaluations, before/after comparisons, or human review when justified.
 
-The final user-facing response must not merely say “researched several skills.” Name the shortlisted skills, state what was learned from each, explain what was deliberately rejected, and distinguish design advantages from validated outcomes. Use [Creation Handoff](creation-handoff.md) for the final structure.
+The final user-facing response must name the shortlisted Skills, state what was learned from each, explain what was deliberately rejected, and distinguish design advantages from validated outcomes. These factual references do not transfer authorship or endorsement. Use [Creation Handoff](creation-handoff.md) for the final structure.
 
 ## 7. Degrade safely
 

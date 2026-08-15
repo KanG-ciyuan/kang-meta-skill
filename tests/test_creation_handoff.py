@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class CreationHandoffTest(unittest.TestCase):
-    def test_output_contract_requires_lineage_and_advantage_evidence(self) -> None:
+    def test_output_contract_requires_kang_owned_lessons_and_evidence(self) -> None:
         text = (ROOT / "SKILL.md").read_text(encoding="utf-8").lower()
         for phrase in (
             "reference skills studied",
@@ -25,8 +25,8 @@ class CreationHandoffTest(unittest.TestCase):
     def test_handoff_reference_contains_required_sections(self) -> None:
         text = (ROOT / "references" / "creation-handoff.md").read_text(encoding="utf-8")
         for heading in (
-            "## 2. Reference skills studied",
-            "## 3. Absorbed and rejected",
+            "## 2. Reference Skills Studied",
+            "## 3. Candidate-Specific Lessons",
             "## 4. Advantages and highlights",
             "## 5. Verification and limits",
         ):

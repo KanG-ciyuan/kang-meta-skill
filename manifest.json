@@ -1,18 +1,17 @@
 {
   "name": "kang-meta-skill",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "owner": "Kang",
   "updated_at": "2026-08-14",
-  "status": "archived-backup",
+  "status": "active",
   "maturity_tier": "governed",
   "lifecycle_stage": "library",
   "context_budget_tier": "production",
   "review_cadence": "manual",
-  "upstream_inspiration": "",
-  "upstream_sync": {
-    "mode": "manual-comparison",
+  "maintenance": {
+    "mode": "manual-reviewed",
     "automatic": false,
-    "policy": "Do not claim parity until changes are reviewed and verified"
+    "policy": "Review capabilities, adopt selectively, and verify before release"
   },
   "kang_defaults": {
     "skill_name_prefix": "kang-",

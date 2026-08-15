@@ -3,46 +3,37 @@
 ## Package
 
 - Name: `kang-meta-skill`
-- Version: `1.0.0`
+- Version: `2.0.0`
 - Owner: `Kang`
-- Repository target: `KanG-ciyuan/kang-meta-skill`
-- Operating purpose: manually maintained fallback; not the active daily source
+- Repository: `KanG-ciyuan/kang-meta-skill`
+- Status: active, manually reviewed
 
-## Reference Skills Studied
+## Capability Preservation
 
-No external reference Skill is presented as a creator, owner, or endorser of this package. The implementation was adapted from an authorized local functional baseline, and the private authorization evidence is intentionally not published.
+- Complete Skill research, creation, migration, evaluation, packaging, governance, and publication workflows remain present.
+- Deterministic discovery, validation, Skill IR, trigger evaluation, release checks, and PR-based publisher tools remain present.
+- Candidate-specific research records, licenses, public dependencies, and evidence remain supported when a task requires them.
+- Only inherited personal identity, profile assets, social accounts, QR codes, automatic brand injection, and ownership defaults are excluded.
 
-## Candidate-Specific Lessons
+## Added Kang Decisions
 
-- Preserve deterministic research, validation, evaluation, and release mechanisms.
-- Separate discovery evidence from quality or adoption claims.
-- Keep external publication gated and local installation optional.
+- Mandatory reuse-first inventory before proposing a new Skill.
+- Three explicit outcomes: `Direct Reuse`, `Extend Existing`, and `Create New`.
+- A Decision Card that pauses implementation when existing coverage is partial.
+- Agent Skill README work stays inside the Meta Skill; ordinary repository README work does not trigger it.
+- Publication does not automatically install or replace the active runtime Skill.
 
-## Deliberate Rejections
+## Evidence
 
-- Personal branding, biography, avatar, QR code, social accounts, and historical release evidence from the source package.
-- Automatic synchronization claims.
-- Direct default-branch pushes and reused release versions.
-- Treating plans, fixtures, or inherited reports as current evidence.
-
-## Original Contributions
-
-- Kang-owned naming, repository defaults, interface prompts, and license.
-- An explicit archived-backup lifecycle and manual comparison policy.
-- A publication path that can verify discovery without downloading or installing the Skill.
-- A repository identity contract that excludes profile asset bundles.
-
-## Advantage And Evidence Labels
-
-- `validated advantage`: 35 unit tests pass locally.
-- `validated advantage`: 23 of 23 trigger cases pass with zero false positives and zero false negatives.
-- `design advantage`: publication supports `--no-sync-local` and `--skip-install-check`.
-- `design advantage`: author information is a minimal text block with no invented biography or media assets.
-- `hypothesis`: the package can serve as a reliable fallback if the active source becomes unavailable.
+- `validated advantage`: 47 unit tests pass locally.
+- `validated advantage`: 23 of 23 trigger cases pass.
+- `validated advantage`: capability parity covers every required capability ID.
+- `design advantage`: reuse decisions are explicit and testable.
+- `design advantage`: publication supports `--no-sync-local`.
+- `hypothesis`: repeated real use will reduce unnecessary Skill creation and context load.
 
 ## Missing Evidence
 
-- No fresh external catalog comparison was run for v1.0.0.
-- No domain-output provider run or human blind review has been completed.
-- No local installation is performed for this release by user request.
-- Future parity with an actively maintained source requires manual comparison.
+- The six-case v2 reuse evaluation is generated separately in `reports/reuse-gate-eval-v2.json`.
+- Remote Release and isolated-install evidence remain pending until publication.
+- Runtime cutover is intentionally deferred.

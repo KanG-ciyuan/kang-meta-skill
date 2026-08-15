@@ -132,8 +132,7 @@ def build_ir(root: Path) -> dict[str, Any]:
             "owner": manifest.get("owner"),
             "maturity_tier": manifest.get("maturity_tier"),
             "lifecycle_stage": manifest.get("lifecycle_stage"),
-            "upstream_inspiration": manifest.get("upstream_inspiration"),
-            "upstream_sync": manifest.get("upstream_sync", {}),
+            "maintenance": manifest.get("maintenance", {}),
         },
         "intent": {
             "description": frontmatter.get("description", ""),
